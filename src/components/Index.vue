@@ -1,5 +1,5 @@
 <template>
-  <div class="index container">
+  <div  class="index container">
     <div class="card" v-for="(smoothie) in smoothies" :key="smoothie.id">
       <div class="card-content">
         <i class="material-icons delete" @click="deleteSmoothie(smoothie.id)">delete</i>
@@ -10,6 +10,15 @@
             </li>
         </ul>
       </div>
+      <span class="btn-floating btn-large halfway-fab pink" >
+        <router-link :to="{name:'EditSmoothie' , params:{smoothie_slug:smoothie.slug}}">
+          <i class="material-icons">edit</i>
+        </router-link>
+      </span>
+    </div>
+    <div v-if="smoothies.length==0" class="nothing text-darken-2">
+      No Smoothies found 😥 <br>
+      You can add some Smoothies 😋
     </div>
   </div>
 </template>
@@ -81,5 +90,9 @@ export default {
   cursor: pointer;
   color: #aaa;
   font-size: 1.5em
+}
+.nothing{
+  text-align: center;
+  color: #aaa
 }
 </style>
